@@ -34,7 +34,9 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 gem 'faraday'
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootsnap', require: false
+
+gem 'omniauth-google-oauth2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -42,6 +44,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'pry'
+  gem 'figaro'
 end
 
 group :test do
