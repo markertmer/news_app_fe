@@ -1,0 +1,33 @@
+{
+  "topic": "string",
+  "type": "articles",
+  "data": [
+    "left_article": {
+      "attributes": {
+        "title": "string",
+        "summary": "text",
+        "source": "string",
+        "url": "string",
+        "photo_url": "string",
+      }
+    },
+    "center_article": {
+      "attributes": {
+        "title": "string",
+        "summary": "text",
+        "source": "string",
+        "url": "string",
+        "photo_url": "string",
+      }
+    },
+    "right_article": {
+      "attributes": {
+        "title": "string",
+        "summary": "text",
+        "source": "string",
+        "url": "string",
+        "photo_url": "string",
+      }
+    },
+  ]
+}
