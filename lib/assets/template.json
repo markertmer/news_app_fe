@@ -8,7 +8,7 @@
         "summary": "text",
         "source": "string",
         "url": "string",
-        "photo_url": "string",
+        "photo_url": "string"
       }
     },
     "center_article": {
@@ -17,7 +17,7 @@
         "summary": "text",
         "source": "string",
         "url": "string",
-        "photo_url": "string",
+        "photo_url": "string"
       }
     },
     "right_article": {
@@ -26,7 +26,7 @@
         "summary": "text",
         "source": "string",
         "url": "string",
-        "photo_url": "string",
+        "photo_url": "string"
       }
     },
   ]
