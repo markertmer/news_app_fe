@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Topic Facade', type: :facade do
 
-  it 'returns 3 articles related to a headline' do
+  xit 'returns 3 articles related to a headline' do
     topic = TopicFacade.get_articles('Biden')
 
     expect(topic.class).to be(TopicObject)

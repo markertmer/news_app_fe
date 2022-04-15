@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   ruby: circleci/ruby@1.4.0
-  
+
 jobs:
   build:
     docker:
@@ -16,9 +16,6 @@ jobs:
     steps:
       - checkout
       - ruby/install-deps
-      - ruby/rubocop-check:
-          format: progress
-          label: Inspecting with Rubocop
   test:
     docker:
       - image: cimg/ruby:2.7.4-node
@@ -58,4 +55,4 @@ workflows:
       - checking
       - test:
           requires:
-            - build 
+            - build
