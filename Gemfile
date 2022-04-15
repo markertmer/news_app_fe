@@ -45,10 +45,13 @@ group :development, :test do
   gem 'capybara'
   gem 'pry'
   gem 'figaro'
+  gem 'rspec_junit_formatter'
 end
 
 group :test do
   gem 'simplecov'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do
