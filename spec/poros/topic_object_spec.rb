@@ -8,32 +8,26 @@ RSpec.describe 'Topic Object', type: :poro do
       "type": "articles",
       "data": {
         "left_article": {
-          "attributes": {
-            "title": "Biden is Cool!",
-            "summary": "Top Ten reasons why we LOVE Joe Biden. Click to read more!",
-            "source": "MSNBC",
-            "url": "http://msnbc.com/biden-rules",
-            "photo_url": "http://msnbc.com/biden-rules/image.jpg"
-          }
+          "title": "Biden is Cool!",
+          "summary": "Top Ten reasons why we LOVE Joe Biden. Click to read more!",
+          "source": "MSNBC",
+          "url": "http://msnbc.com/biden-rules",
+          "photo_url": "http://msnbc.com/biden-rules/image.jpg"
         },
         "center_article": {
-          "attributes": {
-            "title": "Joe Biden: Human?",
-            "summary": "We take a closer look at the personhood of the 46th president",
-            "source": "Associated Press",
-            "url": "http://ap.com/is-biden-human",
-            "photo_url": "http://ap.com/is-biden-human/image.jpg"
-          }
+          "title": "Joe Biden: Human?",
+          "summary": "We take a closer look at the personhood of the 46th president",
+          "source": "Associated Press",
+          "url": "http://ap.com/is-biden-human",
+          "photo_url": "http://ap.com/is-biden-human/image.jpg"
         },
         "right_article": {
-          "attributes": {
-            "title": "Biden is Coming for your Children",
-            "summary": "Lock your doors! Load your guns! Hide your babies!",
-            "source": "Faux Newz",
-            "url": "http://faux-newz.com/biden-sux",
-            "photo_url": "http://faux-newz.com/biden-sux/image.jpg"
-          }
-        },
+          "title": "Biden is Coming for your Children",
+          "summary": "Lock your doors! Load your guns! Hide your babies!",
+          "source": "Faux Newz",
+          "url": "http://faux-newz.com/biden-sux",
+          "photo_url": "http://faux-newz.com/biden-sux/image.jpg"
+        }
       }
     }
 

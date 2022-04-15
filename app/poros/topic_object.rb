@@ -9,7 +9,7 @@ class TopicObject
 
   def create_articles(data)
     data.map do |article_side, attributes|
-      ArticleObject.new(article_side, attributes[:attributes])
+      ArticleObject.new(article_side, attributes)
     end
   end
 end
