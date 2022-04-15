@@ -6,7 +6,7 @@ RSpec.describe 'Topic Object', type: :poro do
     @topic = {
       "topic": "Biden",
       "type": "articles",
-      "data": [
+      "data": {
         "left_article": {
           "attributes": {
             "title": "Biden is Cool!",
@@ -34,7 +34,7 @@ RSpec.describe 'Topic Object', type: :poro do
             "photo_url": "http://faux-newz.com/biden-sux/image.jpg"
           }
         },
-      ]
+      }
     }
 
   end
@@ -55,7 +55,7 @@ RSpec.describe 'Topic Object', type: :poro do
     center_article = object.articles[1]
     right_article = object.articles[2]
 
-    expect(left_article).to be(ArticleObject)
+    expect(left_article).to be_instance_of(ArticleObject)
     expect(left_article.side).to eq("left")
     expect(left_article.title).to eq("Biden is Cool!")
     expect(left_article.summary).to eq("Top Ten reasons why we LOVE Joe Biden. Click to read more!")
@@ -63,7 +63,7 @@ RSpec.describe 'Topic Object', type: :poro do
     expect(left_article.url).to eq("http://msnbc.com/biden-rules")
     expect(left_article.photo_url).to eq("http://msnbc.com/biden-rules/image.jpg")
 
-    expect(center_article).to be(ArticleObject)
+    expect(center_article).to be_instance_of(ArticleObject)
     expect(center_article.side).to eq("center")
     expect(center_article.title).to eq("Joe Biden: Human?")
     expect(center_article.summary).to eq("We take a closer look at the personhood of the 46th president")
@@ -71,7 +71,7 @@ RSpec.describe 'Topic Object', type: :poro do
     expect(center_article.url).to eq("http://ap.com/is-biden-human")
     expect(center_article.photo_url).to eq("http://ap.com/is-biden-human/image.jpg")
 
-    expect(right_article).to be(ArticleObject)
+    expect(right_article).to be_instance_of(ArticleObject)
     expect(right_article.side).to eq("right")
     expect(right_article.title).to eq("Biden is Coming for your Children")
     expect(right_article.summary).to eq("Lock your doors! Load your guns! Hide your babies!")
