@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Topic Service', type: :service do
 
-  it 'gets article data for a given topic' do
+  xit 'gets article data for a given topic' do
     topic = TopicService.get_data('Biden')
 
     expect(topic[:topic]).to eq('Biden')
