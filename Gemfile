@@ -45,6 +45,7 @@ group :development, :test do
   gem 'capybara'
   gem 'pry'
   gem 'figaro'
+  gem 'rspec_junit_formatter'
 end
 
 group :test do
