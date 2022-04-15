@@ -1,7 +1,7 @@
 {
   "topic": "string",
   "type": "articles",
-  "data": [
+  "data": {
     "left_article": {
       "attributes": {
         "title": "string",
@@ -29,5 +29,5 @@
         "photo_url": "string"
       }
     },
-  ]
+  }
 }
