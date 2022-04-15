@@ -73,5 +73,4 @@ RSpec.describe 'Topic Object', type: :poro do
     expect(right_article.url).to eq("http://faux-newz.com/biden-sux")
     expect(right_article.photo_url).to eq("http://faux-newz.com/biden-sux/image.jpg")
   end
-
 end
