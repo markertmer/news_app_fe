@@ -43,4 +43,19 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  # OmniAuth.config.test_mode = true
+  # OmniAuth.config.mock_auth[:google] = {
+  #   :provider => "google_oauth2",
+  #   :uid => "123456789",
+  #   :info => {
+  #     :name => "Happy Lama",
+  #     :email => "happy.lama@example.com",
+  #   },
+  #   :credentials => {
+  #     :token => "token",
+  #     :refresh_token => "another_token",
+  #     :expires_at => 1354920555,
+  #     :expires => true
+  #   }
+  # }
 end

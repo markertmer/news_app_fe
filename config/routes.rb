@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get '/', to: 'welcome#index'
-
+  root to: 'welcome#index'
   get '/dashboard', to: 'users#show'
+  get '/register', to: 'users#new'
 
   get '/auth/google_oauth2/callback', to: 'users#create'
+  get '/auth/failure', to: 'welcome#error'
 end
