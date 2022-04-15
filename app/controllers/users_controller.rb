@@ -1,7 +1,7 @@
-class UsersController < ApplicationController
+# frozen_string_literal: true
 
-  def new
-  end
+class UsersController < ApplicationController
+  def new; end
 
   def create
     auth_hash = request.env['omniauth.auth']
@@ -16,5 +16,4 @@ class UsersController < ApplicationController
   def show
     @user = User.find(session[:user_id])
   end
-
 end
