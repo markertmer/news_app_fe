@@ -37,6 +37,8 @@ gem 'faraday'
 gem 'bootsnap', require: false
 
 gem 'omniauth-google-oauth2'
+gem 'omniauth'
+gem 'rubocop'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -49,6 +51,8 @@ end
 
 group :test do
   gem 'simplecov'
+  gem 'launchy'
+  gem 'orderly'
 end
 
 group :development do
