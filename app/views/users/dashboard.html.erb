@@ -1,0 +1,15 @@
+<h1>Welcome, <%= @user.name %>.</h1>
+<h2>This is your SPINSPOT.</h2>
+
+<%= form_with url: "/search", local: true do |f| %>
+  <%= form.label :keyword, "Search Topics" %>
+  <%= form.text_field :keyword %>
+  <%= form.submit 'Submit' %>
+<% end %>
+
+<h3>Browse Topics</h3>
+<%= button_to "Biden", "/search?keyword=biden" %>
+<%= button_to "Putin", "/search?keyword=putin" %>
+<%= button_to "Supreme Court", "/search?keyword=supreme%20court" %>
+<%= button_to "Will Smith", "/search?keyword=will%20smith" %>
+<%= button_to "Billionaires", "/search?keyword=billionaires" %>
