@@ -1,1 +1,39 @@
-<h1>Get Yo Newz Hurr</h1>
+<h1>SPINSPOT</h1>
+<h2>Exposing Bias in News Reporting</h2>
+
+<p>
+In an age of information overload, it's getting harder to trust the news. ANY news.
+
+A story breaking halfway around the world passes through reporters, editors,
+network executives, CEOs and other stakeholders before it ever reaches your eyeballs.
+
+We may never know the whole truth, but learning to spot the motives behind
+the way a story is told can help us to get closer to it.
+
+We're not saying one news outlet is "better" or "worse" than any other. That's
+for you to decide. SPINSPOT is here for one thing: To show the differences in
+reporting, empowering readers to make up their own mind about the news.
+</p>
+
+<h2>How it Works</h2>
+<ul>
+  <li>Search for a current story or issue, or select one from our suggestions.</li>
+  <li>We'll show you a headline and article summary from three different news sources.</li>
+  <li>Compare and contrast. Critique and criticize.</li>
+  <li>Develop your VERY OWN informed opinion on any issue, AND be able to back it up!</li>
+</ul>
+
+<p>Here's a sample:</p>
+
+<h1>Recent stories on <%= @name.titleize %></h1>
+
+<% @articles.shuffle.each do |article| %>
+  <div id=<%= article.side %>>
+    <h3><%= link_to article.title, article.url %></h3>
+    <%= link_to image_tag(article.photo_url, height: 200),
+    article.url if article.photo_url %>
+    <p>article.summary</p>
+  </div>
+<% end %>
+
+<%= button_to "Sign Up or Sign In to Spot the Spin!", "/auth/google_oauth2" %>
