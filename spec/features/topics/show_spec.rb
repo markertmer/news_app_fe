@@ -33,11 +33,5 @@ RSpec.describe 'Topic Show Page', type: :feature do
       @topic = TopicObject.new(data)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
     end
-    it "sees that the page exists" do
-
-      visit "/topics/#{@topic.topic}"
-
-      expect(page).to have_content("Articles about #{@topic.topic}")
-    end
   end
 end

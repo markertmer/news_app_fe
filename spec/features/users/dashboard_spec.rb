@@ -27,4 +27,5 @@ RSpec.describe 'User Dashboard', type: :feature do
 
     click_button("Supreme Court")
     expect(current_path).to eq("/search")
+  end
 end
