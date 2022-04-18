@@ -6,7 +6,7 @@ RSpec.describe 'Topic Search Page', type: :feature do
     # Need stub data to use for the content
     # @data =
     visit '/dashboard'
-    fill_in("Search Topics", with: "obama")
+    fill_in("Search Topics", with: "biden")
     click_button("Submit")
   end
 
