@@ -26,10 +26,6 @@ RSpec.describe 'User Dashboard', type: :feature do
 
     click_button("Sign Up or Sign In to Spot the Spin!")
 
-    # @user = User.new(name: 'Paul', email: 'paulpaulleonard@gmail.com')
-    # session[:access_token] = auth_hash['credentials']['token']
-    # session[:user_id] = @user.id
-
     # allow_any_instance_of(UsersController).to receive(:foo).and_return(:bar)
 
 
