@@ -21,27 +21,26 @@ RSpec.describe 'access search articles page' do
     visit root_path
     click_link 'Create an account'
     expect(current_path).to eq(register_path)
-    page.should have_button('Join with Google')
+    expect(page).to have_button('Join with Google')
     mock_auth_hash
     click_button 'Join with Google'
-    page.should have_content('Happy Lama')
-    page.should have_button('Sign out')
+    expect(page).to have_content('Happy Lama')
+    expect(page).to have_button('Sign out')
   end
 
   it 'user can sign in using google_oauth2' do
     visit root_path
-    page.should have_content('Sign in with Google')
+    expect(page).to have_content('Sign in with Google')
     mock_auth_hash
     click_link 'Sign in'
-    page.should have_content('Happy Lama')
-    page.should have_button('Sign out')
+    expect(page).to have_content('Happy Lama')
+    expect(page).to have_button('Sign out')
   end
 
   it 'can handle an authentication error' do
     OmniAuth.config.mock_auth[:google_oauth2] = :invalid_credentials
     visit root_path
     click_link 'Sign in with Google'
-    save_and_open_page
-    page.should have_content('invalid_credentials')
+    expect(page).to have_content('invalid_credentials')
   end
 end
