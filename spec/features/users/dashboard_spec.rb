@@ -2,8 +2,14 @@ require 'rails_helper'
 
 RSpec.describe 'User Dashboard', type: :feature do
   before :each do
-    # Oauth logins
-    # @user =
+    json_response = File.read('spec/fixtures/topic_response.json')
+    stub_request(:get, "https://news-app-be.herokuapp.com/api/v1/news?keyword=biden")
+    .to_return(status: 200, body: json_response)
+    # @user = User.new(name: 'Paul', email: 'paulpaulleonard@gmail.com')
+    # session[:access_token] = auth_hash['credentials']['token']
+    # session[:user_id] = @user.id
+
+    # allow_any_instance_of(UsersController).to receive(:foo).and_return(:bar)
     visit '/dashboard'
   end
 
@@ -13,7 +19,7 @@ RSpec.describe 'User Dashboard', type: :feature do
   end
 
   xit 'has a form to search' do
-    fill_in("Search Topics", with: "obama")
+    fill_in("Search Topics", with: "biden")
     click_button("Submit")
     expect(current_path).to eq("/search")
   end
