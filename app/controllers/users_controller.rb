@@ -14,5 +14,4 @@ class UsersController < ApplicationController
   def dashboard
     @user = User.find(session[:user_id])
   end
-
 end
