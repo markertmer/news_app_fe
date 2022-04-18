@@ -1,21 +1,26 @@
 require 'rails_helper'
 
 RSpec.describe 'Topic Facade', type: :facade do
+  before do
+    json_response = File.read('spec/fixtures/topic_response.json')
+    stub_request(:get, "https://news-app-be.herokuapp.com/api/v1/news?keyword=biden")
+    .to_return(status: 200, body: json_response)
+  end
 
-  xit 'returns 3 articles related to a headline' do
-    topic = TopicFacade.get_articles('Biden')
+  it 'returns 3 articles related to a headline' do
+    topic = TopicFacade.get_articles('biden')
 
     expect(topic.class).to be(TopicObject)
 
-    expect(topic.topic).to eq('Biden')
+    expect(topic.topic).to eq('biden')
 
-    expect(topic.articles).to be(Array)
+    expect(topic.articles).to be_a Array
 
-    left_article = object.articles[0]
-    center_article = object.articles[1]
-    right_article = object.articles[2]
+    left_article = topic.articles[0]
+    center_article = topic.articles[1]
+    right_article = topic.articles[2]
 
-    expect(left_article).to be(ArticleObject)
+    expect(left_article).to be_a ArticleObject
     expect(left_article.side).to eq("left")
     expect(left_article.title).to eq("Biden is Cool!")
     expect(left_article.summary).to eq("Top Ten reasons why we LOVE Joe Biden. Click to read more!")
@@ -23,7 +28,7 @@ RSpec.describe 'Topic Facade', type: :facade do
     expect(left_article.url).to eq("http://msnbc.com/biden-rules")
     expect(left_article.photo_url).to eq("http://msnbc.com/biden-rules/image.jpg")
 
-    expect(center_article).to be(ArticleObject)
+    expect(center_article).to be_a ArticleObject
     expect(center_article.side).to eq("center")
     expect(center_article.title).to eq("Joe Biden: Human?")
     expect(center_article.summary).to eq("We take a closer look at the personhood of the 46th president")
@@ -31,7 +36,7 @@ RSpec.describe 'Topic Facade', type: :facade do
     expect(center_article.url).to eq("http://ap.com/is-biden-human")
     expect(center_article.photo_url).to eq("http://ap.com/is-biden-human/image.jpg")
 
-    expect(right_article).to be(ArticleObject)
+    expect(right_article).to be_a ArticleObject
     expect(right_article.side).to eq("right")
     expect(right_article.title).to eq("Biden is Coming for your Children")
     expect(right_article.summary).to eq("Lock your doors! Load your guns! Hide your babies!")
