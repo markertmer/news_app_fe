@@ -1,8 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe 'welcome index page' do
+  let!(:user) {user = User.new({attributes: {name: 'Tester', email: 'fake_email@email.com'}})}
 
   before do
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.silence_get_warning = true
+    OmniAuth.config.add_mock(:google, {:uid => '12345'})
+    Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:google_oauth2]
+    allow_any_instance_of(ApplicationController).to receive(:require_user).and_return(:user)
+
     json_response = File.read('spec/fixtures/topic_response.json')
     stub_request(:get, "https://news-app-be.herokuapp.com/api/v1/news?keyword=biden")
     .to_return(status: 200, body: json_response)
@@ -40,7 +47,7 @@ RSpec.describe 'welcome index page' do
     visit '/'
 
     expect(page).to have_content("Recent Stories on #{@data[:topic]}")
-    
+
     within('#left') do
       expect(page).to have_link("Biden is Cool!") #headline
       expect(page).to have_content("Top Ten reasons why we LOVE Joe Biden. Click to read more!") #summary
@@ -70,7 +77,7 @@ RSpec.describe 'welcome index page' do
     end
   end
 
-  xit 'sign-up/sign-in button present when user is not logged in' do
+  it 'sign-up/sign-in button present when user is not logged in' do
     visit '/'
     expect(page).to have_button("Sign Up or Sign In to Spot the Spin!")
     click_button("Sign Up or Sign In to Spot the Spin!")
