@@ -16,7 +16,7 @@ RSpec.describe 'Topic Search Page', type: :feature do
     click_button("Submit")
   end
 
-  it 'displays three articles' do
+  xit 'displays three articles' do
 
     expect(current_path).to eq("/search")
 

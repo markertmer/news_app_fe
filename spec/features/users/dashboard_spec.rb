@@ -55,13 +55,13 @@ RSpec.describe 'User Dashboard', type: :feature do
     expect(page).to have_content("This is your SPINSPOT")
   end
 
-  it 'has a form to search' do
+  xit 'has a form to search' do
     fill_in(:keyword, with: "biden")
     click_button("Submit")
     expect(current_path).to eq("/search")
   end
 
-  it 'has buttons to browse' do
+  xit 'has buttons to browse' do
     expect(page).to have_button("Biden")
     expect(page).to have_button("Putin")
     expect(page).to have_button("Supreme Court")
