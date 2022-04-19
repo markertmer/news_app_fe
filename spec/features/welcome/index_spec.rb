@@ -85,7 +85,6 @@ RSpec.describe 'welcome index page' do
   end
 
   xit 'my spinspot button present when user is logged in' do
-    # Oauth: sign in the user
     visit '/'
     expect(page).to have_button("Go to My SPINSPOT")
     click_button("Go to My SPINSPOT")
