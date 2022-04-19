@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user, only: dashboard
+  before_action :require_user, only: :dashboard
 
   def create
     auth_hash = request.env['omniauth.auth']
