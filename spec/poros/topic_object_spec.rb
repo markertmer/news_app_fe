@@ -3,34 +3,11 @@ require 'rails_helper'
 RSpec.describe 'Topic Object', type: :poro do
 
   before :each do
-    @topic = {
-      "topic": "Biden",
-      "type": "articles",
-      "data": {
-        "left_article": {
-          "title": "Biden is Cool!",
-          "summary": "Top Ten reasons why we LOVE Joe Biden. Click to read more!",
-          "source": "MSNBC",
-          "url": "http://msnbc.com/biden-rules",
-          "photo_url": "http://msnbc.com/biden-rules/image.jpg"
-        },
-        "center_article": {
-          "title": "Joe Biden: Human?",
-          "summary": "We take a closer look at the personhood of the 46th president",
-          "source": "Associated Press",
-          "url": "http://ap.com/is-biden-human",
-          "photo_url": "http://ap.com/is-biden-human/image.jpg"
-        },
-        "right_article": {
-          "title": "Biden is Coming for your Children",
-          "summary": "Lock your doors! Load your guns! Hide your babies!",
-          "source": "Faux Newz",
-          "url": "http://faux-newz.com/biden-sux",
-          "photo_url": "http://faux-newz.com/biden-sux/image.jpg"
-        }
-      }
-    }
+    json_response = File.read('spec/fixtures/topic_response.json')
+    stub_request(:get, "https://news-app-be.herokuapp.com/api/v1/news?keyword=biden")
+    .to_return(status: 200, body: json_response)
 
+    @topic = JSON.parse(json_response, symbolize_names: true)
   end
 
   it 'creates an object for a topic from the JSON response' do
@@ -39,7 +16,7 @@ RSpec.describe 'Topic Object', type: :poro do
 
     expect(object).to be_instance_of(TopicObject)
 
-    expect(object.topic).to eq("Biden")
+    expect(object.topic).to eq("biden")
     expect(object.type).to eq("articles")
 
     expect(object.articles.class).to be(Array)

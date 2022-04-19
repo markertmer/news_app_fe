@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :require_user, only: :dashboard
 
   def create
     auth_hash = request.env['omniauth.auth']
@@ -10,8 +11,7 @@ class UsersController < ApplicationController
     redirect_to '/dashboard'
   end
 
-  def show
+  def dashboard
     @user = User.find(session[:user_id])
   end
-
 end
