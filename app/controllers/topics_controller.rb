@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-# before_action :require_user
+before_action :require_user
 
   def search
     keyword = params[:keyword]
