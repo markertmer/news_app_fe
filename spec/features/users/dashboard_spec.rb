@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'User Dashboard', type: :feature do
   let!(:user) {user = User.new({attributes: {name: 'Tester', email: 'fake_email@email.com'}})}
-  # let!(:user) {user = User.new(name: 'Tester', email: 'fake_email@email.com') }
 
   before :each do
     OmniAuth.config.test_mode = true
