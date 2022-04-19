@@ -40,7 +40,7 @@ RSpec.describe 'welcome index page' do
     visit '/'
 
     expect(page).to have_content("Recent Stories on #{@data[:topic]}")
-
+    
     within('#left') do
       expect(page).to have_link("Biden is Cool!") #headline
       expect(page).to have_content("Top Ten reasons why we LOVE Joe Biden. Click to read more!") #summary
