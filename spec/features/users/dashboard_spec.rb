@@ -51,7 +51,7 @@ RSpec.describe 'User Dashboard', type: :feature do
   end
 
   xit 'welcomes the user' do
-    # expect(page).to have_content("Welcome, #{user.name}.")
+    expect(page).to have_content("Welcome, #{user.name}.")
     expect(page).to have_content("This is your SPINSPOT")
   end
 

@@ -4,17 +4,24 @@ RSpec.describe 'Topic Search Page', type: :feature do
   before :each do
     # Oauth logins
     # Need stub data to use for the content
-    # @data =
+    json_response = File.read('spec/fixtures/topic_response.json')
+    stub_request(:get, "https://news-app-be.herokuapp.com/api/v1/news?keyword=biden")
+    .to_return(status: 200, body: json_response)
+
+    @data = JSON.parse(json_response)
+
+
     visit '/dashboard'
     fill_in("Search Topics", with: "biden")
     click_button("Submit")
   end
 
-  xit 'displays three articles' do
+  it 'displays three articles' do
 
     expect(current_path).to eq("/search")
 
-    expect(page).to have_content("Recent Stories on #{@data.topic}")
+    expect(page).to have_content("Recent Stories on #{@data['topic'].titleize}")
+
 
     within('#left') do
       expect(page).to have_content("Biden is Cool!") #headline
