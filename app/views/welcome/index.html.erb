@@ -32,7 +32,7 @@ reporting, empowering readers to make up their own mind about the news.
     <h3><%= link_to article.title, article.url %></h3>
     <%= link_to image_tag(article.photo_url, alt: "#{article.side}-image", height: 200),
     article.url if article.photo_url %>
-    <p>article.summary</p>
+    <p><%= article.summary %></p>
   </div>
 <% end %>
 

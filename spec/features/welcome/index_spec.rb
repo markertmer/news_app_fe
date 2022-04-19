@@ -2,30 +2,50 @@ require 'rails_helper'
 
 RSpec.describe 'welcome index page' do
 
-  xit 'exists' do
+  before do
+    json_response = File.read('spec/fixtures/topic_response.json')
+    stub_request(:get, "https://news-app-be.herokuapp.com/api/v1/news?keyword=biden")
+    .to_return(status: 200, body: json_response)
+
+    stub_request(:get, "https://news-app-be.herokuapp.com/api/v1/news?keyword=supreme court")
+    .to_return(status: 200, body: json_response)
+
+    stub_request(:get, "https://news-app-be.herokuapp.com/api/v1/news?keyword=putin")
+    .to_return(status: 200, body: json_response)
+
+    stub_request(:get, "https://news-app-be.herokuapp.com/api/v1/news?keyword=will smith")
+    .to_return(status: 200, body: json_response)
+
+    stub_request(:get, "https://news-app-be.herokuapp.com/api/v1/news?keyword=billionaires")
+    .to_return(status: 200, body: json_response)
+
+    @data = JSON.parse(json_response)
+  end
+  it 'exists' do
+
     visit '/'
     expect(current_path).to eq('/')
   end
 
-  xit 'has introductory info' do
+  it 'has introductory info' do
     visit '/'
     expect(page).to have_content("SPINSPOT")
     expect(page).to have_content("Exposing Bias in News Reporting")
     expect(page).to have_content("In an age of information overload")
   end
 
-  xit 'displays three articles' do
+  it 'displays three articles' do
     # Need stub data to use for the content
     # data =
     visit '/'
 
-    expect(page).to have_content("Recent Stories on #{data.topic}")
+    expect(page).to have_content("Recent Stories on #{@data[:topic]}")
 
     within('#left') do
       expect(page).to have_link("Biden is Cool!") #headline
       expect(page).to have_content("Top Ten reasons why we LOVE Joe Biden. Click to read more!") #summary
       # expect(page).to have_content() #image
-      find("img[alt='left-image']").click
+      # find("img[alt='left-image']").click
       # expect(current_path).to eq("http://msnbc.com/biden-rules") #left-article URL
     end
 
