@@ -1,7 +1,7 @@
-<h1>Welcome, <%= @user.name %>.</h1>
+<h1>Welcome, <%= %>.</h1>
 <h2>This is your SPINSPOT</h2>
 
-<%= form_with url: "/search", local: true do |f| %>
+<%= form_with url: "/search", local: true do |form| %>
   <%= form.label :keyword, "Search Topics" %>
   <%= form.text_field :keyword %>
   <%= form.submit 'Submit' %>
