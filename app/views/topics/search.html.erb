@@ -1,0 +1,12 @@
+<h1>Recent Stories on <%= @name.titleize %></h1>
+
+<% @articles.shuffle.each do |article| %>
+  <div id=<%= article.side %>>
+    <h3><%= link_to article.title, article.url %></h3>
+    <%= link_to image_tag(article.photo_url, alt: "#{article.side}-image", height: 200),
+    article.url if article.photo_url %>
+    <p><%= article.summary %></p>
+  </div>
+<% end %>
+
+<%= button_to "Find More Topics", "/dashboard", method: :get %>

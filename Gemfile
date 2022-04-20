@@ -27,6 +27,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'dalli'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -38,6 +40,7 @@ gem 'bootsnap', require: false
 
 gem 'omniauth-google-oauth2'
 
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -46,9 +49,11 @@ group :development, :test do
   gem 'pry'
   gem 'figaro'
   gem 'rspec_junit_formatter'
+  gem 'shoulda-matchers'
 end
 
 group :test do
+  gem 'launchy'
   gem 'simplecov'
   gem 'vcr'
   gem 'webmock'
