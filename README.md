@@ -44,3 +44,15 @@ Things you may want to cover:
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
+
+In this day and age, it can be pretty difficult to be able to decide for yourself what sources to trust, and which ones are garbage.  Our app is designed to allow a user to search a topic and to recieve back three of the latest articles on said topic.  Each of the articles will be from different sections of the political spectrum, and will be presented in a TLDR format with their identity hidden to the user.  We designed it this way to try and keep intial bias to a minimum before the user reads it.
+
+Add more to this later
+
+<p align="right">(<a href="#top">back to top</a>)</p>
