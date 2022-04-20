@@ -35,7 +35,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'faraday'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
-
+gem 'bootstrap', '~> 5.1.3'
 gem 'omniauth-google-oauth2'
 
 group :development, :test do
