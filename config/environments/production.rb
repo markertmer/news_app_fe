@@ -57,8 +57,8 @@ Rails.application.configure do
   config.log_tags = [ :request_id ]
 
   # Use a different cache store in production.
-  # config.cache_store = :mem_cache_store
-  config.cache_store = :mem_cache_store, 'localhost:11211', 'abc.example.com:11211', { pool_size: 10, pool_timeout: 5 }
+  config.cache_store = :mem_cache_store
+  # config.cache_store = :mem_cache_store, 'localhost:11211', 'abc.example.com:11211', { pool_size: 10, pool_timeout: 5 }
 
   # Configure the cache store.  In this case, configure it to use a MemCacheStore, which uses Dalli.
 
