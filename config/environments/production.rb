@@ -58,7 +58,7 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
-  config.cache_store = :mem_cache_store, 'localhost:11211', 'news-app-fe.herokuapp.com:11211'#, { pool_size: 10, pool_timeout: 5 }
+  config.cache_store = :mem_cache_store, 'localhost:11211'#, 'news-app-fe.herokuapp.com:11211'#, { pool_size: 10, pool_timeout: 5 }
 
   # Configure the cache store.  In this case, configure it to use a MemCacheStore, which uses Dalli.
 
