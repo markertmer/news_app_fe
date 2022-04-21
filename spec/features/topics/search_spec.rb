@@ -30,7 +30,7 @@ RSpec.describe 'Topic Search Page', type: :feature do
     @data = JSON.parse(json_response)
   end
 
-  it 'displays three articles' do
+  it 'displays three articles related to the search by the user' do
     stub_omniauth
     visit '/'
     click_button("Sign Up or Sign In to Spot the Spin!")
@@ -66,5 +66,18 @@ RSpec.describe 'Topic Search Page', type: :feature do
       # find("img[alt='right-image']").click
       # expect(current_path).to eq() #right-article URL
     end
+  end
+
+  it "redirects to /search and has a error message if the user searches with a blank field" do
+    stub_omniauth
+    visit '/'
+    click_button("Sign Up or Sign In to Spot the Spin!")
+
+    expect(current_path).to eq('/dashboard')
+
+    click_button('Submit')
+
+    expect(current_path).to eq('/dashboard')
+    expect(page).to have_content("Field cannot be blank")
   end
 end
