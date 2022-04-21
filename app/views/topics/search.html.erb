@@ -1,40 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap 5 Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<title>SPINSPOT</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-
 <div class="container-fluid p-1 bg-dark text-white text-center">
 <h1>Recent Stories on <%= @name.titleize %></h1>
-
-
-  <div class="container xl-5">
-    <div class="row">
-      <div class="col-sm-4" style="background-color:#C0C0C0;">
-        <h3><%= link_to image_tag(@articles[0].photo_url, alt: "#{@articles[0].side}-image", height: 200),
-        @articles[0].url if @articles[0].photo_url %></h3>
-        <h3><%= link_to @articles[0].title, @articles[0].url, class: "link-dark" %></h3>
-        <h2><%= @articles[0].summary %></h2>
-      </div>
-      <div class="col-sm-4" style="background-color:#6b6b6b;">
-        <h3><%= link_to image_tag(@articles[1].photo_url, alt: "#{@articles[1].side}-image", height: 200),
-        @articles[1].url if @articles[1].photo_url %></h3>
-        <h3><%= link_to @articles[1].title, @articles[1].url, class: "link-dark" %></h3>
-        <h2><%= @articles[1].summary %></h2>
-      </div>
-      <div class="col-sm-4" style="background-color:#C0C0C0">
-        <h3><%= link_to image_tag(@articles[2].photo_url, alt: "#{@articles[2].side}-image", height: 200),
-        @articles[2].url if @articles[2].photo_url %></h3>
-        <h3><%= link_to @articles[2].title, @articles[2].url, class: "link-dark" %></h3>
-        <h2><%= @articles[2].summary %></h2>
-      </div>
-    </div>
-  </div>
+<div class="container xl-5 ms-auto">
+<div class="row">
+<div class="col-sm-4 p-2 ms-auto" style="background-color:#969696">
+  <h3><%= link_to image_tag(@articles[0].photo_url, alt: "#{@articles[0].side}-image", height: 200),
+  @articles[0].url if @articles[0].photo_url %></h3>
+  <h4><%= link_to @articles[0].title, @articles[0].url, class: "link-dark text-decoration-none" %></h4>
+  <h5><%= @articles[0].summary %></h5>
 </div>
-
-<%= button_to "Find More Topics", "/dashboard", method: :get %>
+<div class="col-sm-4 p-2 ms-auto" style="background-color:#6b6b6b;">
+  <h3><%= link_to image_tag(@articles[1].photo_url, alt: "#{@articles[1].side}-image", height: 200),
+  @articles[1].url if @articles[1].photo_url %></h3>
+  <h4><%= link_to @articles[1].title, @articles[1].url, class: "link-dark text-decoration-none" %></h4>
+  <h5><%= @articles[1].summary %></h5>
+</div>
+<div class="col-sm-4 p-2 ms-auto" style="background-color:#969696">
+  <h3><%= link_to image_tag(@articles[2].photo_url, alt: "#{@articles[2].side}-image", height: 200),
+  @articles[2].url if @articles[2].photo_url %></h3>
+  <h4><%= link_to @articles[2].title, @articles[2].url, class: "link-dark text-decoration-none" %></h4>
+  <h5><%= @articles[2].summary %></h5>
+</div>
+</div>
+</div>
