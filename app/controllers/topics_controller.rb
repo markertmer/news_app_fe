@@ -8,7 +8,8 @@ before_action :require_user
       flash.notice = "Field cannot be blank"
     else
       topic = TopicFacade.get_articles(keyword)
-      @articles = topic.articles
+      article_array = topic.articles
+      @articles = article_array.shuffle
       @name = topic.topic
     end
   end
