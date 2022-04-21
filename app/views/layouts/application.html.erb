@@ -17,9 +17,9 @@
   </div>
   <span><nav class="navbar bg-secondary">
     <% if logged_in? %>
-    <h1>Welcome <%= current_user.name %></h1>
+    <h1>Welcome, <%= current_user.name %></h1>
     <ul class="navbar-item float-right p-2">
-        <%= button_to "Find More Topics", "/dashboard", method: :get, class: "btn btn-light" %>
+        <%= button_to "Go to My SPINSPOT", "/dashboard", method: :get, class: "btn btn-light" %>
         <%= button_to "Sign Out", '/logout', class: "btn btn-light" %>
     </ul>
     <% else %>
@@ -31,7 +31,11 @@
     </nav></span>
   <%= yield %>
   <div class="jumbotron text-center bg-secondary" style="margin-bottom:2">
-    <%= button_to "Find More Topics", "/dashboard", method: :get, class: "btn btn-light" %>
+    <% if logged_in? %>
+      <%= button_to "Find More Topics", "/dashboard", method: :get, class: "btn btn-light" %>
+    <% else %>
+    <%= button_to "Sign Up or Sign in to Spot the Spin!", "/auth/google_oauth2", method: :get, class: "btn btn-light" %>
+    <% end %>
   </div>
 </body>
 </html>
