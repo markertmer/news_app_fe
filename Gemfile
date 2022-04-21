@@ -38,7 +38,7 @@ gem 'faraday'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 gem 'bootstrap', '~> 5.1.3'
-gem 'jquery-rails'
+# gem 'jquery-rails'
 gem 'omniauth-google-oauth2'
 
 
