@@ -49,4 +49,14 @@ RSpec.describe 'Topic Search Page', type: :feature do
     expect(page).to have_content("Biden is Coming for your Children") #headline
     expect(page).to have_content("Lock your doors! Load your guns! Hide your babies!") #summary
   end
+
+  it "redirects to /search and has a error message if the user searches with a blank field" do
+    stub_omniauth
+    visit '/'
+    click_button("Sign Up or Sign In to Spot the Spin!")
+    expect(current_path).to eq('/dashboard')
+    click_button('Submit')
+    expect(current_path).to eq('/dashboard')
+    expect(page).to have_content("Field cannot be blank")
+  end
 end
