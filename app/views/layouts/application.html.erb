@@ -1,23 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>NewsAppFe</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>NewsAppFe</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <nav>
-      <%= link_to "Home Page", '/' %>
-    </nav>
+<body>
+  <div class="flash message container-fluid p-1 bg-dark text-white text-center">
     <% flash.each do |type, msg| %>
-      <div>
-        <%= msg %>
-      </div>
+    <%= msg %>
     <% end %>
-    <%= yield %>
-  </body>
+  </div>
+  <span><nav class="navbar bg-secondary">
+    <% if logged_in? %>
+    <h1>Welcome, <%= current_user.name %></h1>
+    <ul class="navbar-item float-right p-2">
+        <%= button_to "Go to My SPINSPOT", "/dashboard", method: :get, class: "btn btn-light" %>
+        <%= button_to "Sign Out", '/logout', class: "btn btn-light" %>
+    </ul>
+    <% else %>
+    <h1>Join SPINSPOT!!</h1>
+      <ul class="nav-item float-right p-2">
+        <%= button_to "Sign Up or Sign In to Spot the Spin!", "/auth/google_oauth2", method: :get, class: "btn btn-light" %>
+    </ul>
+    <% end %>
+    </nav></span>
+  <%= yield %>
+  <div class="jumbotron text-center bg-secondary" style="margin-bottom:2">
+    <% if logged_in? %>
+      <%= button_to "Find More Topics", "/dashboard", method: :get, class: "btn btn-light" %>
+    <% else %>
+    <%= button_to "Sign Up or Sign in to Spot the Spin!", "/auth/google_oauth2", method: :get, class: "btn btn-light" %>
+    <% end %>
+  </div>
+</body>
 </html>

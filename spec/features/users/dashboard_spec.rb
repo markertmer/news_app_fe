@@ -32,7 +32,7 @@ RSpec.describe 'User Dashboard', type: :feature do
     stub_omniauth
     visit '/'
     click_button("Sign Up or Sign In to Spot the Spin!")
-    expect(page).to have_content("Welcome, #{user.name}.")
+    expect(page).to have_content("Welcome, #{user.name}")
     expect(page).to have_content("This is your SPINSPOT")
   end
 
