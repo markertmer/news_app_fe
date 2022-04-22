@@ -21,7 +21,6 @@ before_action :require_user
     def valid_characters(keyword)
       array = ["$", ":", ";", "*", "!", "#", "@", "%", "^", "&", "(", ")", "?", ">", "<", ".", "'", "[", "]"]
       valid = true
-      empty_array = []
       array.each do |character|
         if keyword.include?(character)
           valid = false
