@@ -6,6 +6,9 @@ before_action :require_user
     if keyword == ""
       redirect_to('/dashboard')
       flash.notice = "Field cannot be blank"
+    elsif valid_characters(keyword) == false
+      redirect_to('/dashboard')
+      flash.notice = "Search contained improper characters please try again!"
     else
       topic = TopicFacade.get_articles(keyword)
       article_array = topic.articles
@@ -13,4 +16,17 @@ before_action :require_user
       @name = topic.topic
     end
   end
+
+  private
+    def valid_characters(keyword)
+      array = ["$", ":", ";", "*", "!", "#", "@", "%", "^", "&", "(", ")", "?", ">", "<", ".", "'", "[", "]"]
+      valid = true
+      empty_array = []
+      array.each do |character|
+        if keyword.include?(character)
+          valid = false
+        end
+      end
+      valid
+    end
 end
