@@ -15,9 +15,11 @@
     <%= msg %>
     <% end %>
   </div>
-  <span><nav class="navbar bg-secondary">
+  <span><nav class="navbar bg-dark">
     <% if logged_in? %>
-    <h1>Welcome, <%= current_user.name %></h1>
+    <ul class="welcome" style="color:#FFFFFF">
+        <h1>Welcome, <%= current_user.name %></h1>
+    </ul>
     <ul class="navbar-nav ml-auto p-2">
       <div class="btn-group">
         <%= button_to "Home Page", "/", method: :get, class: "btn btn-light" %>
@@ -33,7 +35,7 @@
     <% end %>
     </nav></span>
   <%= yield %>
-  <div class="jumbotron text-center bg-secondary" style="margin-bottom:2">
+  <div class="jumbotron text-center bg-dark" style="margin-bottom:2">
     <% if logged_in? %>
       <%= button_to "Find More Topics", "/dashboard", method: :get, class: "btn btn-light" %>
     <% else %>
