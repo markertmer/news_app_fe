@@ -19,6 +19,6 @@ before_action :require_user
 
   private
     def valid_characters(keyword)
-      !(keyword =~ /[ \$ \: \; \* \! \# \@ \% \^ \& \( \) \? \> \< \. \[ \] \\ \/ \{ \} ]/)
+      !(keyword =~ /[\$\:\;\*\!\#\@\%\^\&\(\)\?\>\<\.\[\]\\\/\{\}]/)
     end
 end
