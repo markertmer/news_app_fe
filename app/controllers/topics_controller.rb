@@ -20,7 +20,7 @@ before_action :require_user
   private
     def valid_characters_v2(str)
       # You know what, god bless Dennis Ritchie, but I hate Regex
-      !(str =~ /[ \$ \: \; \* \! \# \@ \% \^ \& \( \) \? \> \< \. \[ \] \\ \/ ]/)
+      !(str =~ /[ \$ \: \; \* \! \# \@ \% \^ \& \( \) \? \> \< \. \[ \] \\ \/ \{ \} ]/)
     end
 
     # User gives us a keyword
