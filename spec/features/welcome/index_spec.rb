@@ -61,7 +61,10 @@ RSpec.describe 'welcome index page' do
     expect(current_path).to eq("/dashboard")
   end
 
-  xit 'my spinspot button present when user is logged in' do
+  it 'my spinspot button present when user is logged in' do
+    stub_omniauth
+    visit '/'
+    click_button("Sign Up or Sign In to Spot the Spin!")
     visit '/'
     expect(page).to have_button("Go to My SPINSPOT")
     click_button("Go to My SPINSPOT")

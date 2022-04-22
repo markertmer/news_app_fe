@@ -10,17 +10,22 @@
 </head>
 
 <body>
-  <div class="flash message container-fluid p-1 bg-dark text-white text-center">
+  <div class="flash message container-fluid p-4 bg-dark text-white text-center">
     <% flash.each do |type, msg| %>
     <%= msg %>
     <% end %>
   </div>
-  <span><nav class="navbar bg-secondary">
+  <span><nav class="navbar bg-dark">
     <% if logged_in? %>
-    <h1>Welcome, <%= current_user.name %></h1>
-    <ul class="navbar-item float-right p-2">
+    <ul class="welcome" style="color:#FFFFFF">
+        <h1>Welcome, <%= current_user.name %></h1>
+    </ul>
+    <ul class="navbar-nav ml-auto p-2">
+      <div class="btn-group">
+        <%= button_to "Home Page", "/", method: :get, class: "btn btn-light" %>
         <%= button_to "Go to My SPINSPOT", "/dashboard", method: :get, class: "btn btn-light" %>
         <%= button_to "Sign Out", '/logout', class: "btn btn-light" %>
+      </div>
     </ul>
     <% else %>
     <h1>Join SPINSPOT!!</h1>
@@ -30,7 +35,7 @@
     <% end %>
     </nav></span>
   <%= yield %>
-  <div class="jumbotron text-center bg-secondary" style="margin-bottom:2">
+  <div class="jumbotron text-center bg-dark" style="margin-bottom:2">
     <% if logged_in? %>
       <%= button_to "Find More Topics", "/dashboard", method: :get, class: "btn btn-light" %>
     <% else %>

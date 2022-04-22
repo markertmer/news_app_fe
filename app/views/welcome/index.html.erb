@@ -11,10 +11,10 @@
 
 <div class="container-fluid p-3 bg-dark text-white text-center">
   <h1>SPINSPOT</h1>
-  <h1>Exposing Bias in News Reporting</h1>
+  <h2>Exposing Bias in News Reporting</h2>
   </div>
   <div class="container-fluid p-4 bg-secondary text-black">
-  <h2>
+  <h4>
   In an age of information overload, it's getting harder to trust the news. ANY news.<br>
 
   A story breaking halfway around the world passes through reporters, editors,
@@ -25,8 +25,8 @@
 
   We're not saying one news outlet is "better" or "worse" than any other. That's
   for you to decide.<br>
-  SPINSPOT is here for one thing: To show the differences in reporting, empowering readers to make up their own mind about the news.
-  </h2>
+  SPINSPOT is here for one thing: To show the differences in reporting, empowering readers to make up their own mind about the news.<br><br>
+  </h4>
   </div>
     <div class="container-fluid p-2 bg-secondary text-black">
       <h2>How it Works</h2>
@@ -46,19 +46,19 @@
       <h3><%= link_to image_tag(@articles[0].photo_url, alt: "#{@articles[0].side}-image", height: 200),
       @articles[0].url if @articles[0].photo_url %></h3>
       <h4><%= link_to @articles[0].title, @articles[0].url, class: "link-dark text-decoration-none" %></h4>
-      <h5><%= @articles[0].summary %></h5>
+      <p><%= @articles[0].summary %></p>
     </div>
     <div class="col-sm-4 p-2 ms-auto" style="background-color:#6b6b6b;">
       <h3><%= link_to image_tag(@articles[1].photo_url, alt: "#{@articles[1].side}-image", height: 200),
       @articles[1].url if @articles[1].photo_url %></h3>
       <h4><%= link_to @articles[1].title, @articles[1].url, class: "link-dark text-decoration-none" %></h4>
-      <h5><%= @articles[1].summary %></h5>
+      <p><%= @articles[1].summary %></p>
     </div>
     <div class="col-sm-4 p-2 ms-auto" style="background-color:#969696">
       <h3><%= link_to image_tag(@articles[2].photo_url, alt: "#{@articles[2].side}-image", height: 200),
       @articles[2].url if @articles[2].photo_url %></h3>
       <h4><%= link_to @articles[2].title, @articles[2].url, class: "link-dark text-decoration-none" %></h4>
-      <h5><%= @articles[2].summary %></h5>
+      <p><%= @articles[2].summary %></p>
     </div>
   </div>
 </div>
