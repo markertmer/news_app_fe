@@ -7,8 +7,4 @@ class WelcomeController < ApplicationController
     @articles = article_array.shuffle
     @name = topic.topic
   end
-
-  def show
-
-  end
 end
