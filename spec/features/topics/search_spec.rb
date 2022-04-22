@@ -37,7 +37,7 @@ RSpec.describe 'Topic Search Page', type: :feature do
 
     expect(current_path).to eq("/dashboard")
 
-    fill_in("Enter a keyword to Search Topics", with: "biden")
+    fill_in("Enter a keyword to search topics", with: "biden")
     click_button('Submit')
 
     expect(current_path).to eq("/search")
