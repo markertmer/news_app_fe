@@ -12,8 +12,8 @@
 <div class="container-fluid p-3 bg-dark text-white text-center">
   <h1>SPINSPOT</h1>
   <h2>Exposing Bias in News Reporting</h2>
-  </div>
-  <div class="container-fluid p-4 bg-secondary text-black">
+
+  <div class="container-lg p-4 bg-secondary text-black">
   <h4>
   In an age of information overload, it's getting harder to trust the news. ANY news.<br>
 
@@ -28,13 +28,13 @@
   SPINSPOT is here for one thing: To show the differences in reporting, empowering readers to make up their own mind about the news.<br><br>
   </h4>
   </div>
-    <div class="container-fluid p-2 bg-secondary text-black">
+    <div class="container-lg p-2 bg-secondary text-black">
       <h2>How it Works</h2>
       <ul>
-        <li>Search for a current story or issue, or select one from our suggestions.</li>
-        <li>We'll show you a headline and @articles summary from three different news sources.</li>
-        <li>Compare and contrast. Critique and criticize.</li>
-        <li>Develop your VERY OWN informed opinion on any issue, AND be able to back it up!</li>
+        1. Search for a current story or issue, or select one from our suggestions.<br>
+        2. We'll show you a headline and @articles summary from three different news sources.<br>
+        3. Compare and contrast. Critique and criticize.<br>
+        4. Develop your VERY OWN informed opinion on any issue, AND be able to back it up!<br>
       </ul>
     </div>
   <div class="container-fluid p-1 bg-dark text-white text-center">
@@ -47,18 +47,22 @@
       @articles[0].url if @articles[0].photo_url %></h3>
       <h4><%= link_to @articles[0].title, @articles[0].url, class: "link-dark text-decoration-none" %></h4>
       <p><%= @articles[0].summary %></p>
+      <p style="color:#000000"><%= @articles[0].source %></p>
     </div>
     <div class="col-sm-4 p-2 ms-auto" style="background-color:#6b6b6b;">
       <h3><%= link_to image_tag(@articles[1].photo_url, alt: "#{@articles[1].side}-image", height: 200),
       @articles[1].url if @articles[1].photo_url %></h3>
       <h4><%= link_to @articles[1].title, @articles[1].url, class: "link-dark text-decoration-none" %></h4>
       <p><%= @articles[1].summary %></p>
+      <p style="color:#000000"><%= @articles[1].source %></p>
     </div>
     <div class="col-sm-4 p-2 ms-auto" style="background-color:#969696">
       <h3><%= link_to image_tag(@articles[2].photo_url, alt: "#{@articles[2].side}-image", height: 200),
       @articles[2].url if @articles[2].photo_url %></h3>
       <h4><%= link_to @articles[2].title, @articles[2].url, class: "link-dark text-decoration-none" %></h4>
       <p><%= @articles[2].summary %></p>
+      <p style="color:#000000"><%= @articles[2].source %></p>
+      </div>
     </div>
   </div>
 </div>

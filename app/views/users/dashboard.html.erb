@@ -9,23 +9,47 @@
 </head>
 <body>
 
-<div class="container-fluid p-1 bg-dark text-white text-center">
-  <h2>This is your SPINSPOT</h2>
+  <div class="container-fluid p-1 bg-dark text-white text-center">
+    <h2>This is your SPINSPOT</h2>
+
+    <div class="container-lg p-3 bg-secondary text-black text-center">
+      <h3>
+        <%= form_with url: "/search", local: true do |form| %>
+        <%= form.label :keyword, "Enter a keyword to search topics" %>
+        <%= form.text_field :keyword %>
+        <%= form.submit 'Submit' %>
+        <% end %>
+      </h3>
+    </div>
+    <div class="container-fluid p-1 bg-dark text-white text-center">
+      <h3>Or browse these topics:</h3>
+    </div>
+    <div class="container xl-5 ms-auto">
+      <div class="row">
+        <div class="col-sm-4 p-2 ms-auto" style="background-color:#969696">
+          <h3>USA National News</h3>
+          <%= button_to "Biden", "/search?keyword=biden" %>
+          <%= button_to "Supreme Court", "/search?keyword=supreme%20court" %>
+          <%= button_to "Guns in schools", "/search?keyword=guns%10schools" %>
+          <%= button_to "Immigration", "/search?keyword=immigration" %>
+          <%= button_to "Abortion pills", "/search?keyword=abortion%20pills" %>
+        </div>
+        <div class="col-sm-4 p-2 ms-auto" style="background-color:#6b6b6b;">
+          <h3>World News</h3>
+          <%= button_to "Ukraine", "/search?keyword=ukarine" %>
+          <%= button_to "Palestine", "/search?keyword=Palestine" %>
+          <%= button_to "United Nations", "/search?keyword=United%20nations" %>
+          <%= button_to "China", "/search?keyword=china" %>
+          <%= button_to "Putin", "/search?keyword=Putin" %>
+        </div>
+        <div class="col-sm-4 p-2 ms-auto" style="background-color:#969696">
+          <h3>Science, Art, & Culture</h3>
+          <%= button_to "Will Smith", "/search?keyword=will%20smith" %>
+          <%= button_to "Billionaires", "/search?keyword=billionaires" %>
+          <%= button_to "Climate change", "/search?keyword=climate%20change" %>
+          <%= button_to "COVID", "/search?keyword=covid" %>
+          <%= button_to "Johnny Depp", "/search?keyword=johnny%20depp" %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="container-fluid p-1 bg-secondary text-black text-center">
-  <h2>
-<%= form_with url: "/search", local: true do |form| %>
-  <%= form.label :keyword, "Enter a keyword to Search Topics" %>
-  <%= form.text_field :keyword %>
-  <%= form.submit 'Submit' %>
-<% end %>
-</h2>
-</div>
-<div class="container-fluid p-1 bg-dark text-white text-center">
-<h3>Or browse these topics:</h3>
-<%= button_to "Biden", "/search?keyword=biden" %>
-<%= button_to "Putin", "/search?keyword=putin" %>
-<%= button_to "Supreme Court", "/search?keyword=supreme%20court" %>
-<%= button_to "Will Smith", "/search?keyword=will%20smith" %>
-<%= button_to "Billionaires", "/search?keyword=billionaires" %>
-</div>
