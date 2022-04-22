@@ -17,18 +17,21 @@
       @articles[0].url if @articles[0].photo_url %></h3>
       <h4><%= link_to @articles[0].title, @articles[0].url, class: "link-dark text-decoration-none" %></h4>
       <p><%= @articles[0].summary %></p>
+      <p style="color:#000000"><%= @articles[0].source %></p>
     </div>
     <div class="col-sm-4 p-2 ms-auto" style="background-color:#6b6b6b;">
       <h3><%= link_to image_tag(@articles[1].photo_url, alt: "#{@articles[1].side}-image", height: 200),
       @articles[1].url if @articles[1].photo_url %></h3>
       <h4><%= link_to @articles[1].title, @articles[1].url, class: "link-dark text-decoration-none" %></h4>
       <p><%= @articles[1].summary %></p>
+      <p style="color:#000000"><%= @articles[1].source %></p>
     </div>
     <div class="col-sm-4 p-2 ms-auto" style="background-color:#969696">
       <h3><%= link_to image_tag(@articles[2].photo_url, alt: "#{@articles[2].side}-image", height: 200),
       @articles[2].url if @articles[2].photo_url %></h3>
       <h4><%= link_to @articles[2].title, @articles[2].url, class: "link-dark text-decoration-none" %></h4>
       <p><%= @articles[2].summary %></p>
+      <p style="color:#000000"><%= @articles[2].source %></p>
 </div>
 </div>
 </div>
