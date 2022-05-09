@@ -1,69 +1,26 @@
+# Use the latest 2.1 version of CircleCI pipeline process engine.
+# See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
-orbs:
-  ruby: circleci/ruby@1.4.0
-  heroku: circleci/heroku@1.2.6
-
-workflows:
-  build_and_test:
-    jobs:
-      - build
-      - checking
-      - test:
-          requires:
-            - build 
-  heroku_deploy:
-    jobs:
-      - build
-      - heroku/deploy-via-git: # Use the pre-configured job, deploy-via-git
-          requires:
-            - build
-          filters:
-            branches:
-              only: main
-          post-steps:
-            - run: heroku run rake db:migrate -a news-app-fe
-
+# Define a job to be invoked later in a workflow.
+# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  build:
+  say-hello:
+    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
+    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
-      - image: cimg/ruby:2.7.4-node
+      - image: cimg/base:stable
+    # Add steps to the job
+    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
-      - ruby/install-deps
-  checking:
-    docker:
-      - image: cimg/ruby:2.7.4-node
-    steps:
-      - checkout
-      - ruby/install-deps
-  test:
-    docker:
-      - image: cimg/ruby:2.7.4-node
-      - environment:
-          POSTGRES_DB: news-app-fe_test
-          POSTGRES_USER: news-app-fe
-          POSTGRES_PASSWORD: ''
-        image: cimg/postgres:14.1
-    environment:
-      BUNDLE_JOBS: 3
-      BUNDLE_RETRY: 3
-      PGHOST: 127.0.0.1
-      PGUSER: news-app-fe
-      PGPASSWORD: ''
-      RAILSENV: test
-    parallelism: 3
-    steps:
-      - checkout
-      - ruby/install-deps
       - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run:
-          name: Database setup
-          command: |
-              bundle exec rails db:create RAILS_ENV=test
-              bundle exec rails db:migrate RAILS_ENV=test
-      - ruby/rspec-test:
-          label: RSpec tests
-          include: spec/**/*_spec.rb
+          name: "Say hello"
+          command: "echo Hello, World!"
+
+# Invoke jobs via workflows
+# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
+workflows:
+  say-hello-workflow:
+    jobs:
+      - say-hello
