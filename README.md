@@ -3,9 +3,8 @@
 # SPINSPOT
 ## version 1
 
-## About The Project
+SpinSpot is a Rails application designed to help readers compare similar news stories from different sources. For any given topic, SpinSpot will display three side-by-side stories, each with its own headline, image, summary, and name of the news source it was taken from. Readers can then "spot the spin" by comparing the different ways in which each news source treats the issue.  
 
-- SpinSpot is a Rails application designed to help readers compare similar news stories from different sources. For any given topic, SpinSpot will display three side-by-side stories, each with its own headline, image, summary, and name of the news source it was taken from. Readers can then "spot the spin" by comparing the different ways in which each news source treats the issue.  
 - This repository is for the front end web application, which consumes the back end API. The project mimics a service-oriented architecture where the back end is responsible for consuming external APIs and exposing the information to the front end as users request articles for different topics. The back end repository can be found [here](https://github.com/stevenjames-turing/consultancy_news_BE)
 - The application is currently deployed on Heroku and available for public consumption [here](https://news-app-fe.herokuapp.com)
 - Articles related to one current topic will be displayed on the homepage. Users must sign in with Google to be able to search and browse for additional topics.
