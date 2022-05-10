@@ -1,96 +1,130 @@
 <div id="top"></div>
 
 # SPINSPOT
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li><a href="#about-the-project">About The Project</a></li>
-    <li><a href="#getting-started">Getting Started</a></li>
-    <li><a href="#built-with">Built With</a></li>
-    <li>
-      <a href="#api-info">API Info</a>
-      <ul>
-        <li><a href="#consumed">Consumed</a></li>
-        <li><a href="#exposed">Exposed</a></li>
-      </ul>
-    </li>
-    <li><a href="Contributors">Contributors</a></li>
-  </ol>
-</details>
+## version 1
 
 ## About The Project
 
-- In an age of information overload, it's getting harder to trust the news. ANY news. A story breaking halfway around the world passes through reporters, editors, network executives, CEOs, and other stakeholders before it ever reaches your eyeballs. We may never know the whole truth, but learning to spot the motives behind the way a story is told can help us to get closer to it. We're not saying one news outlet is "better" or "worse" than any other; that's for you to decide. SPINSPOT is here for one thing: To show the differences in reporting, empowering readers to make up their own mind about the news. We are here for you to SPOT the SPIN in your daily news.
-- This project mimics a service-oriented architecture where the back-end is responsible for consuming external API's and making the information avaiable by request to users through our front-end through our own API.
-- Check out the Back-End at the [SPINSPOT Back-End Repo](https://github.com/stevenjames-turing/consultancy_news_BE)
-- Both repositories are accessible through Heroku:
-  - [Heroku Link - SPINSPOT BE](https://news-app-be.herokuapp.com/)
-  - [Heroku Link - SPINSPOT FE](https://news-app-fe.herokuapp.com/)
-- [Turing Project Page](https://backend.turing.edu/module3/projects/consultancy/)
+- SpinSpot is a Rails application designed to help readers compare similar news stories from different sources. For any given topic, SpinSpot will display three side-by-side stories, each with its own headline, image, summary, and name of the news source it was taken from. Readers can then "spot the spin" by comparing the different ways in which each news source treats the issue.  
+- This repository is for the front end web application, which consumes the back end API. The project mimics a service-oriented architecture where the back end is responsible for consuming external APIs and exposing the information to the front end as users request articles for different topics. The back end repository can be found [here](https://github.com/stevenjames-turing/consultancy_news_BE)
+- The application is currently deployed on Heroku and available for public consumption [here](https://news-app-fe.herokuapp.com)
+- Articles related to one current topic will be displayed on the homepage. Users must sign in with Google to be able to search and browse for additional topics.
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Getting Started
 
-1. Fork and Clone the repo: [GitHub - markertmer/news_app_fe](hhttps://github.com/markertmer/news_app_fe)
-2. Install gem packages: `bundle install`
-3. Setup the database: `rails db:{create,migrate}`
-4. Get Mediastack API key [here](https://mediastack.com/)
-5. Get TLDRThis API key [here](https://rapidapi.com/tldrthishq-tldrthishq-default/api/tldrthis/)
-6. Setup Figaro: `bundle exec figaro install`
-7. Add API keys to `config/application.yml`
- -
-    ```
-    mediastack_key: <put_your_key_here>
-    tldr_key: <put_your_key_here>
-    ```
-<p align="right">(<a href="#top">back to top</a>)</p>
+Follow these steps to get your own copy of the front end application.
 
-## Built With:
+### Prerequisites
 
-- Framework: Ruby on Rails
-  - Versions
-    - Ruby: 2.7.4
-    - Rails: 5.2.6
-- Database: PostgreSQL
-- Other tech used:
-  - CircleCI
-  - Postman
-  - RSpec
-  - Boostrap
-<p align="right">(<a href="#top">back to top</a>)</p>
+- Ruby 2.7.4
+- Rails 5.2.7
+- Obtain a [Google OAuth](https://console.cloud.google.com/apis/credentials) Client ID and Client Secret for your app.
 
-## API Info:
+### Installing
 
-  ### Consumed:
-  - Mediastack
-    - Used to retrieve news articles by passing sources and keywords to available endpoints.
-    - Endpoints Used:
-      - Live News: `get http://api.mediastack.com/v1/news`
-      - Sources: `get http://api.mediastack.com/v1/sources`
-  - TLDRThis
-    - Used to parse news articles by providing source-link and returns a summary of original article
-    - Endpoints Used:
-      - Human-like Article Summarization: `post https://tldrthis.p.rapidapi.com/v1/model/abstractive/summarize-url/`
-      - Extractive Article Summarization: `post https://tldrthis.p.rapidapi.com/v1/model/extractive/summarize-url/`
+Navigate into the home directory, install the gems, and setup a local database:
+```
+$ cd sweater_weather
+$ bundle install
+$ rails db:create
+$ rails db:migrate
+```
 
-  ### Exposed:
-  - SPINSPOT
-    - Available Endpoints:
-      - `get: /api/v1/news?keyword=<search_params>`
-    - Example Response:
+Create an `application.yml` file using Figaro, then open it for editing. The file is git-ignored, so it may not show up in your GUI.
+```
+$ bundle exec figaro install
+$ (open in your text editor) config/application.yml
+```
 
-      - <img src="https://user-images.githubusercontent.com/91357724/164321651-108608a6-ecd4-4173-9c86-5912f10fcd6e.png" alt="Example Response">
+Add your Google OAuth credentials to `application.yml` file using the syntax shown:
+```YML
+GOOGLE_CLIENT_ID: your_client_id
+GOOGLE_CLIENT_SECRET: your_client_secret
+```
+
+Ensure all tests are passing.
+```
+$ bundle exec rspec
+=> .................
+
+=> Finished in 0.80712 seconds (files took 1.79 seconds to load)
+=> 17 examples, 0 failures
+
+=> Coverage report generated for RSpec to /news_app_fe/coverage. 384 / 400 LOC (96.0%) covered.
+```
+
+You will also need to install the [SpinSpot back end](https://github.com/stevenjames-turing/consultancy_news_BE) in a separate local repository, or use the [currently deployed version](https://news-app-be.herokuapp.com) of it in order to start sending requests and displaying results.
+
+## Requests and Responses
+
+The front end consumes information from the back end service via one `GET` endpoint that includes a topic keyword, for example:
+```
+/api/v1/news?keyword=biden
+```
+The JSON response will follow this format:
+```JSON
+{
+  "topic": "biden",
+  "type": "articles",
+  "data": {
+    "left_article": {
+      "title": "Biden is Cool!",
+      "summary": "Top Ten reasons why we LOVE Joe Biden...",
+      "source": "MSNBC",
+      "url": "http://msnbc.com/biden-rules",
+      "photo_url": "http://msnbc.com/biden-rules/image.jpg"
+    },
+    "center_article": {
+      "title": "Joe Biden: Human",
+      "summary": "We take a closer look at the personhood of the 46th president...",
+      "source": "Associated Press",
+      "url": "http://ap.com/biden-is-a-human",
+      "photo_url": "http://ap.com/biden-is-a-human/image.jpg"
+    },
+    "right_article": {
+      "title": "Biden is Coming for your Children",
+      "summary": "Lock your doors! Load your guns! Hide your babies...",
+      "source": "Fox News",
+      "url": "http://fox-news.com/biden-sux",
+      "photo_url": "http://faux-newz.com/biden-is-evil/image.jpg"
+    }
+  }
+}
+
+```
+
+## Article Selection
+
+Each topic search will return one article from the "left", "center" and "right" areas of the political spectrum, according to this chart:
+![image](https://user-images.githubusercontent.com/91342410/167652605-0870841d-9e21-4617-9386-f121891ad54b.png)
+
+The order of the articles is randomized in order to allow the reader to view them without any expectations.
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Contributors
 
 - [Blake Dempsey](https://github.com/bdempsey864)<br>
+- [Tamara Dowis](https://github.com/wanderlust-create)<br>
 - [Mark Ertmer](https://github.com/markertmer)<br>
+- [Steven James](https://github.com/stevenjames-turing)<br>
 - [Paul Leonard](https://github.com/pleonar1)<br>
 - [Ruben Pasillas](https://github.com/hobbiathan)<br>
-- [Steven James](https://github.com/stevenjames-turing)<br>
-- [Tamara Dowis](https://github.com/wanderlust-create)<br>
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+## Contributing
+
+Please [contact me](https://github.com/markertmer) if you are interested in contributing to this API.
+
+## License
+
+All rights reserved. But feel free to make a copy and make it yours!
+
+## Acknowledgements
+
+ - This project was completed as part of the Module 3 curriculum in the  [Back End Engineering Program](https://backend.turing.edu/) at **[Turing School of Software and Design](https://turing.edu/)**.
+ - It was submitted on April 22, 2022 and received a passing grade from instructor [Jamison Ordway](https://github.com/jamisonordway).
+ - The project was built to the specification of [these requirements](https://backend.turing.edu/module3/projects/consultancy/)
