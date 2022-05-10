@@ -116,7 +116,7 @@ The order of the articles is randomized in order to allow the reader to view the
 
 ## Contributing
 
-Please [contact me](https://github.com/markertmer) if you are interested in contributing to this API.
+Please [contact me](https://github.com/markertmer) if you are interested in contributing to this application.
 
 ## License
 
