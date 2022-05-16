@@ -22,7 +22,7 @@ workflows:
             branches:
               only: main
           post-steps:
-            - run: heroku run rake db:migrate -a news-app-fe
+            - run: heroku run rake db:migrate -a sample-space-be
 
 jobs:
   build:
@@ -41,15 +41,15 @@ jobs:
     docker:
       - image: cimg/ruby:2.7.4-node
       - environment:
-          POSTGRES_DB: news-app-fe_test
-          POSTGRES_USER: news-app-fe
+          POSTGRES_DB: sample-space-be_test
+          POSTGRES_USER: sample-space-be
           POSTGRES_PASSWORD: ''
         image: cimg/postgres:14.1
     environment:
       BUNDLE_JOBS: 3
       BUNDLE_RETRY: 3
       PGHOST: 127.0.0.1
-      PGUSER: news-app-fe
+      PGUSER: sample-space-be
       PGPASSWORD: ''
       RAILSENV: test
     parallelism: 3
